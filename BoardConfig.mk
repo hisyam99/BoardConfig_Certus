@@ -64,8 +64,8 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 
 # Kernel toolchains
-# TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-none-linux-gnueabihf-
-# KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-none-linux-gnueabihf-9.2/bin
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-none-linux-gnueabihf-
+KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-none-linux-gnueabihf-9.2/bin
 
 # Lineage hardware
 BOARD_HARDWARE_CLASS += \
