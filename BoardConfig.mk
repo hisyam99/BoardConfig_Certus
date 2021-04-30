@@ -64,8 +64,8 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 
 # Kernel toolchains
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-none-linux-gnueabihf-
-KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-none-linux-gnueabihf-9.2/bin
+# TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-none-linux-gnueabihf-
+# KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-none-linux-gnueabihf-9.2/bin
 
 # Lineage hardware
 BOARD_HARDWARE_CLASS += \
@@ -87,7 +87,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 #BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_DTBOIMG_PARTITION_SIZE := 16777216
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
-BUILD_WITHOUT_VENDOR := true
 
 # Properties
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
@@ -101,12 +100,9 @@ TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 
 # SELinux
-include device/mediatek/sepolicy/sepolicy.mk
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/public
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
-TARGET_USES_PREBUILT_VENDOR_SEPOLICY := true
-TARGET_HAS_FUSEBLK_SEPOLICY_ON_VENDOR := true
 SELINUX_IGNORE_NEVERALLOWS := true
 
 # Symbols
@@ -114,6 +110,7 @@ TARGET_LD_SHIM_LIBS := /system/lib/libshowlogo.so|libshim_showlogo.so
 
 # Treble
 BOARD_VNDK_VERSION  := current
+PRODUCT_EXTRA_VNDK_VERSIONS := 28
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_PRODUCT := system/product
 
